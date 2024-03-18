@@ -1,0 +1,136 @@
+[
+    {
+        "Tool_name" : "Above",
+        "Description" : "Contains an invisible protocol sniffer for finding vulnerabilities in the network, designed for pentesters and security professionals,It is based entirely on network traffic analysis, so it does not make any noise on the air. Above allows pentesters to automate the process of finding vulnerabilities in network hardware. Discovery protocols, dynamic routing, FHRP, STP, LLMNR/NBT-NS, etc.",
+        "Dependencies" : ["python3","python3-colorama","python3-scapy"],
+        "Commands" : [
+            {"flag": "-h", "description": "help"},
+            {"flag": "--interface", "description": "Specify the interface"},
+            {"flag": "--output", "description": "Specify the output pcap file to record traffic"},
+            {"flag": "--timer", "description": "Specify the timer value (seconds)"},
+            {"flag": "--input-pcap", "description": "Specify the input pcap file to analyze traffic"}
+        ],
+        "Usage" : ["sudo ip link set eth0 promisc on ","above --input-pcap dump.pcap", "Passive ARP : above --interface eth0 --passive-arp"],
+        "Extra-Info" : "Detects upto 22 protocols"
+    },
+    {
+        "Tool_name" : "Aesfix",
+        "Description" : [ "This", "program", "implements", "a", "method", "for", "rectifying", "bit", "errors", "within", "an", 
+        "AES", "key", "schedule", ",", "which", "is", "designed", "to", "be", "employed", "in", "conjunction", 
+        "with", "the", "output", "generated", "by", "the", "\"aeskeyfind\"", "program", ".", "It", "specifically", 
+        "targets", "AES-128", "key", "schedules", "and", "is", "capable", "of", "rectifying", "unidirectional", 
+        "1->0", "bit", "errors", ".", "While", "prioritizing", "readability", "over", "performance", ",", "it", 
+        "serves", "various", "purposes", ",", "including", "forensic", "investigations", "."
+    ],
+        "Dependencies" : ["libc6","libgcc-s1","libstdc++6"],
+        "Commands" : ["None"],
+        "Usage" : ["aesfix SCHEDULE-FILE"],
+        "Extra-Info" : ["Corrects", "bit", "errors", "in", "an", "AES", "key", "schedule", "read", "from", "the", "specified", 
+        "hex-encoded", "file", "."]
+    },
+    {
+        "Tool_name" : "aeskeyfind",
+        "Description" : ["this", "program", "illustrates", "automatic", "techniques", "for", "locating", "128bit", "and", "256bit", "aes", "keys", "in", "a", "captured", "memory", "image", "the", "program", "uses", "various", "algorithms", "and", "also", "performs", "a", "simple", "entropy", "test", "to", "filter", "out", "blocks", "that", "are", "not", "keys", "it", "counts", "the", "number", "of", "repeated", "bytes", "and", "skips", "blocks", "that", "have", "too", "many", "repeats", "this", "method", "works", "even", "if", "several", "bits", "of", "the", "key", "schedule", "have", "been", "corrupted", "due", "to", "memory", "decay", "this", "package", "is", "useful", "to", "several", "activities", "as", "forensics", "investigations"],
+        "Dependencies" : ["libc6"],
+        "Commands" : [{"flag": "-v", "description": "verbose Output"}, {"flag": "-q", "description": "dont display a progress bar"}, {"flag": "-t THRESHOLD", "description": "sets the maximum number of bit errors allowed in a candidate key schedule (default = 10)"}, {"flag": "-h", "description": "help"}],
+        "Usage" : ["aeskeyfind [OPTION]... MEMORY-IMAGE"],
+        "Extra-Info" : ["locates", "128bit", "and", "256bit", "aes", "keys", "in", "a", "captured", "memory", "image"]
+
+    },
+    {
+        "Tool_name" : "affcat",
+        "Description" : ["the", "advanced", "forensic", "format", "aff", "is", "ondisk", "format", "for", "storing", "computer", "forensic", "information", "critical", "features", "of", "aff", "include","aff", "allows", "you", "to", "store", "both", "computer", "forensic", "data", "and", "associated", "metadata", "in", "one", "or", "more", "files", "aff", "allows", "files", "to", "be", "digital", "signed", "to", "provide", "for", "chainofcustody", "and", "longterm", "file", "integrityaff", "allows", "for", "forensic", "disk", "images", "to", "stored", "encrypted", "and", "decrypted", "onthefly", "for", "processing", "this", "allows", "disk", "images", "containing", "privacy", "sensitive", "material", "to", "be", "stored", "on", "the", "internet"],
+        "Dependencies" : ["libaffilb0v5","libc6","libxepat1","libfuse2","libgcc-s1","libssl3","libstdc++6"],
+        "Commands" : [{"flag": "-s name", "description": "Just output segment name"}, {"flag": "-p ###", "description": "just output data page number ###"}, {"flag": "-S ###", "description": "Just output data sector ### (assumes 512-byte sectors). Sector #0 is first"}, {"flag": "-q", "description": "quiet; don't print to STDERR if a page is skipped"}, {"flag": "-n", "description": "noisy; tell when pages are skipped."}, {"flag": "-l", "description": "List all of the segment names"}, {"flag": "-L", "description": "List segment names, lengths, and args"}, {"flag": "-d", "description": "debug. Print the page numbers to stderr as data goes to stdout"}, {"flag": "-b", "description": "Output BADFALG for bad blocks (default is NULLs)"}, {"flag": "-v", "description": "Just print the version number and exit."}, {"flag": "-r offset:count", "description": "seek to offset and output count characters in each file; may be repeated"}],
+        "Usage" : [
+            {"command": "affcat [options] infile [... more infiles]", "description": "Concatenate and display the contents of one or more AFF files."}
+        ],        
+        "Extra-Info" : ["the", "aff", "toolkit", "provides", "these", "executables", "affcat", "affcompare", "affconvert", "affcopy", "affcrypto", "affdiskprint", "affinfo", "affix", "affrecover", "affsegment", "affsign", "affstats", "affuse", "affverify", "and", "affxml"]        
+    },
+    {
+        "Tool_name" : "affcompare",
+        "Description" : ["reports", "if", "file", "was", "successfully", "copied", "to", "amazon", "s3", "checking", "only", "for", "existence", "not", "reading", "back", "the", "bytesbecause", "all", "writes", "to", "s3", "are", "validated", "by", "the", "md5", "of", "the", "object"],
+        "Dependencies" : ["libaffilb0v5","libc6","libxepat1","libfuse2","libgcc-s1","libssl3","libstdc++6"],
+        "Commands" : [
+            {"flag": "-p", "description": "report about the results of preening"},
+            {"flag": "-e", "description": "Just report about existence (use with -r)"},
+            {"flag": "-s", "description": "Just see if all of the segments are present, but don't validate the contents. (Primarily for use with Amazon S3)"},
+            {"flag": "-V", "description": "just print the version number and exit"},
+            {"flag": "-v", "description": "Verbose; each file as it is compared."},
+            {"flag": "-q", "description": "Quiet. No output except for errors"},
+            {"flag": "-a", "description": "print what's the same (all)"},
+            {"flag": "-b", "description": "print the numbers of differing sectors"},
+            {"flag": "-c", "description": "print the contents of differing sectors"},
+            {"flag": "-m", "description": "Just report about the data (ignore metadata)"},
+            {"flag": "-P ###", "description": "Just examine the differences on page ###"},
+            {"flag": "-r dir1 dir2", "description": "recursively compare what's in dir1 with dir2, and report what's in dir1 that's not in dir2"}
+        ],
+        "Usage" : [
+            {"command": "affcompare file1.aff file2.aff", "description": "Compare two AFF files."},
+            {"command": "affcompare f1.aff f2.aff dir1/", "description": "Compare two AFF files or directories."},
+            {"command": "affcompare -b img file.aff", "description": "Compare the contents of two files (binary comparison)."},
+            {"command": "affcompare -b img file1.aff file2.aff", "description": "Compare two files (binary comparison)."},
+            {"command": "affcompare -re dir1 dir2", "description": "Recursively compare the contents of two directories."},
+            {"command": "affcompare -rse dir1 s3:///", "description": "Recursively compare the contents of a local directory with a directory on Amazon S3."},
+            {"command": "affcompare -rs dir1 s3:///", "description": "Recursively compare the contents of a directory on Amazon S3 with a local directory."}
+        ],        
+        "Extra-Info" : ["compare", "the", "contents", "of", "an", "iso", "file", "to", "an", "aff", "file"]    
+    },
+    {
+        "Tool_name" : "affconvert",
+        "Description" : [],
+        "Dependencies" : ["libaffilb0v5","libc6","libxepat1"],
+        "Commands" : [
+            {"flag": "-q", "description": "Quiet mode. Don't ask questions, don't print status."},
+            {"flag": "-V", "description": "Just print the version number and exit."},
+            {"flag": "-a<ext>", "description": "Use 'ext' for aff files (default is aff; afd for AFD files)."},
+            {"flag": "-L", "description": "Use the LZMA compression algorithm (better but slower)."},
+            {"flag": "-Mn[kmg]", "description": "Set maximum size of output file. Suffix with k, m or g. Use with -o."},
+            {"flag": "-O<dir>", "description": "Use 'dir' as the output directory. Example: -Otest. Note that you need to create the directory."},
+            {"flag": "-o<dir>.afd", "description": "Output to 'dir'.afd (can only convert one at a time). Consider AFF if file ends using .aff. Otherwise assumes raw. The directory must have .afd as extension in name."},
+            {"flag": "-s<n>", "description": "Set the image_pagesize as 'n' (default 16777216)."}],
+        "Usage" : [
+            {"command": "affconvert [options] file1 [... files]", "description": ""},
+            {"command": "affconvert file1.raw", "description": "Convert file.rqw into file.aff"},
+            {"command": "affconvert -r file1.aff", "description": "Convert file.aff to file.raw"},
+            {"command": "affconvert -M4g -odvd.afd bigfile.aff", "description": "Split an AFF File into 4GB chunks for archiving into DVD"}
+        ],    
+        "Extra-Info" : ["aff", "is", "an", "open", "and", "extensible", "file", "format", "to", "store", "disk", "images", "and", "associated", "metadata", "it", "is", "useful", "in", "several", "scenaries", "as", "computer", "forensics", "investiga\u2010tions"]
+    },
+    {
+        "Tool_name" : "Affinfo",
+        "Description" : [],
+        "Dependencies" : ["libaffilb0v5","libc6","libxepat1"],
+        "Commands" : [
+            {"flag": "-a", "description": "print ALL segments (normally data segments are suppressed)"},
+            {"flag": "-b", "description": "print how many bad blocks in each segment (implies -a)"},
+            {"flag": "-i", "description": "identify the files, don't do info on them."},
+            {"flag": "-w", "description": "wide output; print more than 1 line if necessary."},
+            {"flag": "-s segment", "description": "Just print information about 'segment'. (may be repeated)"},
+            {"flag": "-m", "description": "validate MD5 hash of entire image"},
+            {"flag": "-S", "description": "validate SHA1 hash of entire image"},
+            {"flag": "-v", "description": "validate the hash of each page (if present)"},
+            {"flag": "-y", "description": "don't print segments of lengths 16 and 20 as hex"},
+            {"flag": "-p<passphrase>", "description": "Specify <passphrase> to decrypt file"},
+            {"flag": "-l", "description": "Just print the segment names and exit"},
+            {"flag": "-V", "description": "Just print the version number and exit."},
+            {"flag": "-X", "description": "no data preview; just print the segment names"},
+            {"flag": "-x", "description": "print binary values in hex (default is ASCII)"},
+            {"flag": "-d", "description": "debug"},
+            {"flag": "-A", "description": "if infile is a device, print the number of sectors and sector size to stdout in XML. Otherwise error do this"}
+        ],
+        "Usage" : [{"command" : "affinfo [options] infile", "description" : ""}],
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "AirCrack-ng",
+        "Description" : ["aircrackng", "is", "a", "complete", "suite", "of", "tools", "to", "assess", "wifi", "network", "securityit", "focuses", "on", "different", "areas", "of", "wifi", "securitymonitoring", "packet", "capture", "and", "export", "of", "data", "to", "text", "files", "for", "further", "processing", "by", "third", "party", "tools", "attacking", "replay", "attacks", "deauthentication", "fake", "access", "points", "and", "others", "via", "packet", "injection", "testing", "checking", "wifi", "cards", "and", "driver", "capabilities", "capture", "and", "injection", "cracking", "wep", "and", "wpa", "psk", "wpa", "1", "and", "2all", "tools", "are", "command", "line", "which", "allows", "for", "heavy", "scripting", "a", "lot", "of", "guis", "have", "taken", "advantage", "of", "this", "feature", "it", "works", "primarily", "on", "linux", "but", "also", "windows", "macos", "freebsd", "openbsd", "netbsd", "as", "well", "as", "solaris", "and", "even", "ecomstation", "2"],
+        "Dependencies" : ["ethtool","hwloc","iw","libc6","libgcc-s1","libgcrypt20","libhwloc15","libnl-3-200","libnl-genl-3-200","libpcap0.8","libprce3","libsqlite3-0","libstdc++6","python3","rfkill","usbutils","wireless-tools","zlib1g"],
+        "Commands" : [],
+        "Usage" : [
+            {"mode": "WPA Wordlist Mode", "description": "Specify the wordlist to use (-w password.lst) and the path to the capture file (wpa.cap) containing at least one 4-way handshake."},
+            {"command": "aircrack-ng -w password.lst wpa.cap", "description": ""}
+        ],
+        "Extra-Info" : []
+    }
+]
