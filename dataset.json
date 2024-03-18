@@ -323,7 +323,52 @@
         "Tool_name" : "makeivs-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-b <bssid>",
+                "description": "Set the access point MAC address."
+            },
+            {
+                "flag": "-f <num>",
+                "description": "Set the number of the first IV."
+            },
+            {
+                "flag": "-k <key>",
+                "description": "Set the target network WEP key in hexadecimal format."
+            },
+            {
+                "flag": "-s <num>",
+                "description": "Set the seed used to set up the random generator."
+            },
+            {
+                "flag": "-w <file>",
+                "description": "Set the filename to write IVs into."
+            },
+            {
+                "flag": "-c <num>",
+                "description": "Set the number of IVs to generate."
+            },
+            {
+                "flag": "-d <num>",
+                "description": "Set the percentage of duplicate IVs."
+            },
+            {
+                "flag": "-e <num>",
+                "description": "Set the percentage of erroneous keystreams."
+            },
+            {
+                "flag": "-l <num>",
+                "description": "Set the length of keystreams."
+            },
+            {
+                "flag": "-n",
+                "description": "Ignore weak IVs."
+            },
+            {
+                "flag": "-p",
+                "description": "Use the PRNG algorithm to generate IVs."
+            }
+        ],        
         "Usage" : [
             {
             "command" : "makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs",
@@ -357,7 +402,44 @@
         "Tool_name" : "easside-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-h",
+                "description": "Display this help screen."
+            },
+            {
+                "flag": "-v <victim mac>",
+                "description": "Set the victim BSSID (MAC address)."
+            },
+            {
+                "flag": "-m <src mac>",
+                "description": "Set the source MAC address."
+            },
+            {
+                "flag": "-i <ip>",
+                "description": "Set the source IP address."
+            },
+            {
+                "flag": "-r <router ip>",
+                "description": "Set the router IP address."
+            },
+            {
+                "flag": "-s <buddy ip>",
+                "description": "Set the Buddy-ng IP address (mandatory)."
+            },
+            {
+                "flag": "-f <iface>",
+                "description": "Set the interface to use (mandatory)."
+            },
+            {
+                "flag": "-c <channel>",
+                "description": "Lock the wireless card to this channel."
+            },
+            {
+                "flag": "-n",
+                "description": "Determine only the Internet IP address."
+            }
+        ],        
         "Usage" : [
             {
                 "command": "buddy-ng",
@@ -374,7 +456,36 @@
         "Tool_name" : "besside-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-b <victim mac>",
+                "description": "Set the victim BSSID (MAC address)."
+            },
+            {
+                "flag": "-R <victim ap regex>",
+                "description": "Set the victim ESSID (network name) regex pattern. PCRE (Perl Compatible Regular Expressions) is required."
+            },
+            {
+                "flag": "-s <WPA server>",
+                "description": "Upload the wpa.cap file for cracking."
+            },
+            {
+                "flag": "-c <chan>",
+                "description": "Set the channel lock."
+            },
+            {
+                "flag": "-p <pps>",
+                "description": "Set the flood rate (packets per second)."
+            },
+            {
+                "flag": "-W",
+                "description": "Enable WPA mode only."
+            },
+            {
+                "flag": "-v",
+                "description": "Verbose output. Use multiple times (-vv) for increased verbosity."
+            }
+        ],        
         "Usage" : [
             {
                 "command": "besside-ng -W -v wlan0mon",
@@ -387,7 +498,68 @@
         "Tool_name" : "airtun-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-x nbpps",
+                "description": "Number of packets per second (default: 100)."
+            },
+            {
+                "flag": "-a bssid",
+                "description": "Set Access Point MAC address. In WDS Mode, this sets the Receiver."
+            },
+            {
+                "flag": "-i iface",
+                "description": "Capture packets from this interface."
+            },
+            {
+                "flag": "-y file",
+                "description": "Read PRGA from this file."
+            },
+            {
+                "flag": "-w wepkey",
+                "description": "Use this WEP-KEY to encrypt packets."
+            },
+            {
+                "flag": "-p pass",
+                "description": "Use this WPA passphrase to decrypt packets (use with -a and -e)."
+            },
+            {
+                "flag": "-e essid",
+                "description": "Target network SSID (use with -p)."
+            },
+            {
+                "flag": "-t tods",
+                "description": "Send frames to AP (1) or to client (0) or tunnel them into a WDS/Bridge (2)."
+            },
+            {
+                "flag": "-r file",
+                "description": "Read frames out of pcap file."
+            },
+            {
+                "flag": "-h MAC",
+                "description": "Source MAC address."
+            },
+            {
+                "flag": "-s transmitter",
+                "description": "Set Transmitter MAC address for WDS Mode."
+            },
+            {
+                "flag": "-b",
+                "description": "Bidirectional mode. This enables communication in Transmitter's AND Receiver's networks. Works only if you can see both stations."
+            },
+            {
+                "flag": "--repeat",
+                "description": "Activates repeat mode."
+            },
+            {
+                "flag": "--bssid <mac>",
+                "description": "BSSID to repeat."
+            },
+            {
+                "flag": "--netmask <mask>",
+                "description": "Netmask for BSSID filter."
+            }
+        ],        
         "Usage" : [
             {
                 "mode": "wIDS",
@@ -401,7 +573,28 @@
         "Tool_name" : "airserv-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-h",
+                "description": "Display this help screen."
+            },
+            {
+                "flag": "-p <port>",
+                "description": "TCP port to listen on (default: 666)."
+            },
+            {
+                "flag": "-d <iface>",
+                "description": "Wifi interface to use."
+            },
+            {
+                "flag": "-c <chan>",
+                "description": "Channel to use."
+            },
+            {
+                "flag": "-v <level>",
+                "description": "Debug level (1 to 3; default: 1)."
+            }
+        ],        
         "Usage" : [
             {
                 "command": "airserv-ng -p 4444 -d wlan0mon -c 6",
@@ -414,7 +607,40 @@
         "Tool_name" : "airolib-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "--stats",
+                "description": "Output information about the database."
+            },
+            {
+                "flag": "--sql <sql>",
+                "description": "Execute the specified SQL statement."
+            },
+            {
+                "flag": "--clean [all]",
+                "description": "Clean the database from old junk. Use 'all' to also reduce filesize if possible and run an integrity check."
+            },
+            {
+                "flag": "--batch",
+                "description": "Start batch-processing all combinations of ESSIDs and passwords."
+            },
+            {
+                "flag": "--verify [all]",
+                "description": "Verify a set of randomly chosen PMKs. If 'all' is given, all invalid PMKs will be deleted."
+            },
+            {
+                "flag": "--import [essid|passwd] <file>",
+                "description": "Import a text file as a list of ESSIDs or passwords."
+            },
+            {
+                "flag": "--import cowpatty <file>",
+                "description": "Import a cowpatty file."
+            },
+            {
+                "flag": "--export cowpatty <essid> <file>",
+                "description": "Export to a cowpatty file."
+            }
+        ],        
         "Usage" : [
             {
                 "command": "airolib-ng airolib-db --import essid /root/essid.txt",
@@ -439,7 +665,148 @@
         "Tool_name" : "airodump-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "--ivs",
+                "description": "Save only captured IVs."
+            },
+            {
+                "flag": "--gpsd",
+                "description": "Use GPSd."
+            },
+            {
+                "flag": "--write <prefix>",
+                "description": "Dump file prefix."
+            },
+            {
+                "flag": "-w",
+                "description": "Same as --write."
+            },
+            {
+                "flag": "--beacons",
+                "description": "Record all beacons in dump file."
+            },
+            {
+                "flag": "--update <secs>",
+                "description": "Display update delay in seconds."
+            },
+            {
+                "flag": "--showack",
+                "description": "Print ack/cts/rts statistics."
+            },
+            {
+                "flag": "-h",
+                "description": "Hide known stations for --showack."
+            },
+            {
+                "flag": "-f <msecs>",
+                "description": "Time in milliseconds between hopping channels."
+            },
+            {
+                "flag": "--berlin <secs>",
+                "description": "Time before removing the AP/client from the screen when no more packets are received. Default: 120 seconds."
+            },
+            {
+                "flag": "-r <file>",
+                "description": "Read packets from that file."
+            },
+            {
+                "flag": "-T",
+                "description": "While reading packets from a file, simulate the arrival rate of them as if they were 'live'."
+            },
+            {
+                "flag": "-x <msecs>",
+                "description": "Active Scanning Simulation."
+            },
+            {
+                "flag": "--manufacturer",
+                "description": "Display manufacturer from IEEE OUI list."
+            },
+            {
+                "flag": "--uptime",
+                "description": "Display AP Uptime from Beacon Timestamp."
+            },
+            {
+                "flag": "--wps",
+                "description": "Display WPS information (if any)."
+            },
+            {
+                "flag": "--output-format <formats>",
+                "description": "Output format. Possible values: pcap, ivs, csv, gps, kismet, netxml, logcsv."
+            },
+            {
+                "flag": "--ignore-negative-one",
+                "description": "Removes the message that says fixed channel <interface>: -1."
+            },
+            {
+                "flag": "--write-interval <seconds>",
+                "description": "Output file(s) write interval in seconds."
+            },
+            {
+                "flag": "--background <enable>",
+                "description": "Override background detection."
+            },
+            {
+                "flag": "-n <int>",
+                "description": "Minimum AP packets received before displaying it."
+            },
+            {
+                "flag": "--encrypt <suite>",
+                "description": "Filter APs by cipher suite."
+            },
+            {
+                "flag": "--netmask <netmask>",
+                "description": "Filter APs by mask."
+            },
+            {
+                "flag": "--bssid <bssid>",
+                "description": "Filter APs by BSSID."
+            },
+            {
+                "flag": "--essid <essid>",
+                "description": "Filter APs by ESSID."
+            },
+            {
+                "flag": "--essid-regex <regex>",
+                "description": "Filter APs by ESSID using a regular expression."
+            },
+            {
+                "flag": "-a",
+                "description": "Filter unassociated clients."
+            },
+            {
+                "flag": "--ht20",
+                "description": "Set channel to HT20 (802.11n)."
+            },
+            {
+                "flag": "--ht40-",
+                "description": "Set channel to HT40- (802.11n)."
+            },
+            {
+                "flag": "--ht40+",
+                "description": "Set channel to HT40+ (802.11n)."
+            },
+            {
+                "flag": "--channel <channels>",
+                "description": "Capture on specific channels."
+            },
+            {
+                "flag": "--band <abg>",
+                "description": "Band on which airodump-ng should hop."
+            },
+            {
+                "flag": "-C <frequencies>",
+                "description": "Use these frequencies in MHz to hop."
+            },
+            {
+                "flag": "--cswitch <method>",
+                "description": "Set channel switching method. 0: FIFO (default), 1: Round Robin, 2: Hop on last."
+            },
+            {
+                "flag": "-s",
+                "description": "Same as --cswitch."
+            }
+        ],        
         "Usage" : [
             {
                 "mode": "Monitor all wireless networks, frequency hopping between all wireless channels",
@@ -497,7 +864,36 @@
         "Tool_name" : "besside-ng",
         "Description" : [],
         "Dependencies": [],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-b <victim mac>",
+                "description": "Specify the Victim BSSID."
+            },
+            {
+                "flag": "-R <victim ap regex>",
+                "description": "Specify the Victim ESSID regex (requires PCRE)."
+            },
+            {
+                "flag": "-s <WPA server>",
+                "description": "Upload wpa.cap for cracking."
+            },
+            {
+                "flag": "-c <chan>",
+                "description": "Channel lock."
+            },
+            {
+                "flag": "-p <pps>",
+                "description": "Set flood rate."
+            },
+            {
+                "flag": "-W",
+                "description": "Attack WPA only."
+            },
+            {
+                "flag": "-v",
+                "description": "Verbose output. Use -vv for more verbosity."
+            }
+        ],        
         "Usage" : [
             {
                 "command": "besside-ng -W -v wlan0mon",
