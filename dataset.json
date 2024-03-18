@@ -10,7 +10,11 @@
             {"flag": "--timer", "description": "Specify the timer value (seconds)"},
             {"flag": "--input-pcap", "description": "Specify the input pcap file to analyze traffic"}
         ],
-        "Usage" : ["sudo ip link set eth0 promisc on ","above --input-pcap dump.pcap", "Passive ARP : above --interface eth0 --passive-arp"],
+        "Usage" : [
+            {"command": "sudo ip link set eth0 promisc on", "description": "Enable promiscuous mode on the eth0 interface."},
+            {"command": "above --input-pcap dump.pcap", "description": "Execute the 'above' command with input from the dump.pcap file."},
+            {"command": "Passive ARP : above --interface eth0 --passive-arp", "description": "Execute the 'above' command with passive ARP mode on the eth0 interface."}
+        ],
         "Extra-Info" : "Detects upto 22 protocols"
     },
     {
@@ -24,7 +28,9 @@
     ],
         "Dependencies" : ["libc6","libgcc-s1","libstdc++6"],
         "Commands" : ["None"],
-        "Usage" : ["aesfix SCHEDULE-FILE"],
+        "Usage" : [
+            {"command": "aesfix SCHEDULE-FILE", "description": "Correct bit errors in an AES key schedule file."}
+        ],        
         "Extra-Info" : ["Corrects", "bit", "errors", "in", "an", "AES", "key", "schedule", "read", "from", "the", "specified", 
         "hex-encoded", "file", "."]
     },
@@ -33,7 +39,9 @@
         "Description" : ["this", "program", "illustrates", "automatic", "techniques", "for", "locating", "128bit", "and", "256bit", "aes", "keys", "in", "a", "captured", "memory", "image", "the", "program", "uses", "various", "algorithms", "and", "also", "performs", "a", "simple", "entropy", "test", "to", "filter", "out", "blocks", "that", "are", "not", "keys", "it", "counts", "the", "number", "of", "repeated", "bytes", "and", "skips", "blocks", "that", "have", "too", "many", "repeats", "this", "method", "works", "even", "if", "several", "bits", "of", "the", "key", "schedule", "have", "been", "corrupted", "due", "to", "memory", "decay", "this", "package", "is", "useful", "to", "several", "activities", "as", "forensics", "investigations"],
         "Dependencies" : ["libc6"],
         "Commands" : [{"flag": "-v", "description": "verbose Output"}, {"flag": "-q", "description": "dont display a progress bar"}, {"flag": "-t THRESHOLD", "description": "sets the maximum number of bit errors allowed in a candidate key schedule (default = 10)"}, {"flag": "-h", "description": "help"}],
-        "Usage" : ["aeskeyfind [OPTION]... MEMORY-IMAGE"],
+        "Usage" : [
+            {"command": "aeskeyfind [OPTION]... MEMORY-IMAGE", "description": "Search for AES keys in a memory image."}
+        ],        
         "Extra-Info" : ["locates", "128bit", "and", "256bit", "aes", "keys", "in", "a", "captured", "memory", "image"]
 
     },
@@ -128,9 +136,151 @@
         "Dependencies" : ["ethtool","hwloc","iw","libc6","libgcc-s1","libgcrypt20","libhwloc15","libnl-3-200","libnl-genl-3-200","libpcap0.8","libprce3","libsqlite3-0","libstdc++6","python3","rfkill","usbutils","wireless-tools","zlib1g"],
         "Commands" : [],
         "Usage" : [
-            {"mode": "WPA Wordlist Mode", "description": "Specify the wordlist to use (-w password.lst) and the path to the capture file (wpa.cap) containing at least one 4-way handshake."},
-            {"command": "aircrack-ng -w password.lst wpa.cap", "description": ""}
+            {
+                "mode": "Basic WEP Cracking",
+                "command": "aircrack-ng all-ivs.ivs",
+                "description": "To have aircrack-ng conduct a WEP key attack on a capture file, pass it the filename, either in .ivs or .cap/.pcap format. Aircrack-ng 1.4"
+            },
+            {
+                "mode": "WPA Wordlist Mode",
+                "command": "aircrack-ng -w password.lst wpa.cap",
+                "description": "Specify the wordlist to use (-w password.lst) and the path to the capture file (wpa.cap) containing at least one 4-way handshake."
+            }
+        ],        
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airgraph-ng",
+        "Description" : [],
+        "Dependencies" : ["ethtool","hwloc","iw","libc6","libgcc-s1","libgcrypt20","libhwloc15","libnl-3-200","libnl-genl-3-200","libpcap0.8","libprce3","libsqlite3-0","libstdc++6","python3","rfkill","usbutils","wireless-tools","zlib1g"],
+        "Commands" : [
+            {
+                "flag": "-i dump-01.csv",
+                "description": "Specify the input file to use."
+            },
+            {
+                "flag": "-o capr.png",
+                "description": "Specify the output file to generate."
+            },
+            {
+                "flag": "-g CAPR",
+                "description": "Specify the graph type."
+            }
         ],
+        "Usage" :  [
+            {
+                "mode": "CAPR Graph",
+                "command": "airgraph-ng -i dump-01.csv -o capr.png -g CAPR",
+                "description": "Specify the input file to use (-i dump-01.csv), the output file to generate (-o capr.png) and the graph type (-g CAPR):"
+            },
+            {
+                "mode": "CPG Graph",
+                "command": "airgraph-ng -i dump-01.csv -o cpg.png -g CPG",
+                "description": "Creating your Graph using, dump-01.csv and writing to, cpg.png"
+            }
+        ],
+        "Extra-Info" : []        
+    },
+    {
+        "Tool_name" : "wpaclean",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [{
+            "command" : "/usr/share/doc/aircrack-ng/examples# wpaclean /root/handshakes.cap wpa-psk-linksys.cap wpa.cap",
+            "description" : "Parse the provided capture files (wpa-psk-linksys.cap wpa.cap) and save any 4-way handshakes to a new file (/root/handshakes.cap):"     
+        }
+    ],
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "wesside-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+            "command" : "wesside-ng -i wlan0mon -v de:ad:be:ef:ca:fe",
+            "description" : "Use the specified monitor mode interface (-i wlan0mon) and target a single BSSID (-v de:ad:be:ef:ca:fe)"     
+        }
+    ],
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "makeivs-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+            "command" : "makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs",
+            "description" : "Specify a BSSID (-b de:ad:be:ef:ca:fe), WEP key (-k 123456789ABCDEF123456789AB), and output filename (-w makeivs.ivs)"     
+        }
+    ],
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "makeivs-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+            "command" : "makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs",
+            "description" : "Specify a BSSID (-b de:ad:be:ef:ca:fe), WEP key (-k 123456789ABCDEF123456789AB), and output filename (-w makeivs.ivs)"     
+        },
+        {
+            "command" : "aircrack-ng makeivs.ivs",
+            "description" : "Testing the Cracked File for data"
+        }
+    ],
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "ivstools",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+            "command" : "ivstools --convert wep_64_ptw.cap out.ivs",
+            "description" : "Strip out the initialization vectors of the provided .pcap capture and save them to a new file"     
+        },
+        {
+            "command" : "ivstools --merge *.ivs /root/all-ivs.ivs",
+            "description" : "Merge multiple IVS files into a single IVS file named 'all-ivs.ivs' located in the '/root' directory."
+        }
+    ],
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "easside-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "command": "buddy-ng",
+                "description": "Run the buddy-ng tool."
+            },
+            {
+                "command": "easside-ng -v de:ad:be:ef:ca:fe -m 3c:46:d8:4e:ef:aa -s 127.0.0.1 -f wlan0mon -c 6",
+                "description": "Launch the Easside-ng attack with the following options:\n- Set the victim MAC address to 'de:ad:be:ef:ca:fe'.\n- Set the MAC address of the access point to '3c:46:d8:4e:ef:aa'.\n- Set the source IP address to '127.0.0.1'.\n- Use the wireless interface 'wlan0mon'.\n- Set the channel to '6'."
+            }
+        ],        
+    "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "besside-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "command": "besside-ng -W -v wlan0mon",
+                "description": "Launch the besside-ng attack with the following options:\n- Attack WPA only.\n- Display verbose output.\n- Use monitor mode interface 'wlan0mon'."
+            }
+        ],            
         "Extra-Info" : []
     }
 ]
