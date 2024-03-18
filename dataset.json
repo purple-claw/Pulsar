@@ -131,10 +131,123 @@
         "Extra-Info" : []
     },
     {
-        "Tool_name" : "AirCrack-ng",
+        "Tool_name" : "aircrack-ng",
         "Description" : ["aircrackng", "is", "a", "complete", "suite", "of", "tools", "to", "assess", "wifi", "network", "securityit", "focuses", "on", "different", "areas", "of", "wifi", "securitymonitoring", "packet", "capture", "and", "export", "of", "data", "to", "text", "files", "for", "further", "processing", "by", "third", "party", "tools", "attacking", "replay", "attacks", "deauthentication", "fake", "access", "points", "and", "others", "via", "packet", "injection", "testing", "checking", "wifi", "cards", "and", "driver", "capabilities", "capture", "and", "injection", "cracking", "wep", "and", "wpa", "psk", "wpa", "1", "and", "2all", "tools", "are", "command", "line", "which", "allows", "for", "heavy", "scripting", "a", "lot", "of", "guis", "have", "taken", "advantage", "of", "this", "feature", "it", "works", "primarily", "on", "linux", "but", "also", "windows", "macos", "freebsd", "openbsd", "netbsd", "as", "well", "as", "solaris", "and", "even", "ecomstation", "2"],
         "Dependencies" : ["ethtool","hwloc","iw","libc6","libgcc-s1","libgcrypt20","libhwloc15","libnl-3-200","libnl-genl-3-200","libpcap0.8","libprce3","libsqlite3-0","libstdc++6","python3","rfkill","usbutils","wireless-tools","zlib1g"],
-        "Commands" : [],
+        "Commands" : [
+            {
+                "flag": "-a <amode>",
+                "description": "Force attack mode: 1/WEP, 2/WPA-PSK."
+            },
+            {
+                "flag": "-e <essid>",
+                "description": "Specify the target network identifier (ESSID)."
+            },
+            {
+                "flag": "-b <bssid>",
+                "description": "Specify the target access point's MAC address."
+            },
+            {
+                "flag": "-p <nbcpu>",
+                "description": "Specify the number of CPUs to use. By default, all CPUs are used."
+            },
+            {
+                "flag": "-q",
+                "description": "Enable quiet mode, suppressing status output."
+            },
+            {
+                "flag": "-C <macs>",
+                "description": "Merge the given Access Points to a virtual one."
+            },
+            {
+                "flag": "-l <file>",
+                "description": "Write the key to the specified file, overwriting it if it exists."
+            },
+            {
+                "flag": "-c",
+                "description": "Search alpha-numeric characters only."
+            },
+            {
+                "flag": "-t",
+                "description": "Search binary coded decimal characters only."
+            },
+            {
+                "flag": "-h",
+                "description": "Search the numeric key for Fritz!BOX."
+            },
+            {
+                "flag": "-d <mask>",
+                "description": "Use masking of the key (e.g., A1:XX:CF:YY)."
+            },
+            {
+                "flag": "-m <maddr>",
+                "description": "Specify the MAC address to filter usable packets."
+            },
+            {
+                "flag": "-n <nbits>",
+                "description": "Specify the WEP key length: 64/128/152/256/512."
+            },
+            {
+                "flag": "-i <index>",
+                "description": "Specify the WEP key index (1 to 4). Default: any."
+            },
+            {
+                "flag": "-f <fudge>",
+                "description": "Specify the bruteforce fudge factor. Default: 2."
+            },
+            {
+                "flag": "-k <korek>",
+                "description": "Disable one attack method (1 to 17)."
+            },
+            {
+                "flag": "-x or -x0",
+                "description": "Disable bruteforce for last keybytes."
+            },
+            {
+                "flag": "-x1",
+                "description": "Enable last keybyte bruteforcing (default)."
+            },
+            {
+                "flag": "-x2",
+                "description": "Enable last 2 keybytes bruteforcing."
+            },
+            {
+                "flag": "-X",
+                "description": "Disable bruteforce multithreading."
+            },
+            {
+                "flag": "-y",
+                "description": "Enable experimental single bruteforce mode."
+            },
+            {
+                "flag": "-K",
+                "description": "Use only old KoreK attacks (pre-PTW)."
+            },
+            {
+                "flag": "-s",
+                "description": "Show the key in ASCII while cracking."
+            },
+            {
+                "flag": "-M <num>",
+                "description": "Specify the maximum number of IVs to use."
+            },
+            {
+                "flag": "-D",
+                "description": "WEP decloak, skip broken keystreams."
+            },
+            {
+                "flag": "-P <num>",
+                "description": "PTW debug: 1: disable Klein, 2: PTW."
+            },
+            {
+                "flag": "-1",
+                "description": "Run only 1 try to crack the key with PTW."
+            },
+            {
+                "flag": "-V",
+                "description": "Run in visual inspection mode."
+            }
+        ],        
         "Usage" : [
             {
                 "mode": "Basic WEP Cracking",
@@ -215,19 +328,6 @@
             {
             "command" : "makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs",
             "description" : "Specify a BSSID (-b de:ad:be:ef:ca:fe), WEP key (-k 123456789ABCDEF123456789AB), and output filename (-w makeivs.ivs)"     
-        }
-    ],
-    "Extra-Info" : []
-    },
-    {
-        "Tool_name" : "makeivs-ng",
-        "Description" : [],
-        "Dependencies": [],
-        "Commands" : [],
-        "Usage" : [
-            {
-            "command" : "makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs",
-            "description" : "Specify a BSSID (-b de:ad:be:ef:ca:fe), WEP key (-k 123456789ABCDEF123456789AB), and output filename (-w makeivs.ivs)"     
         },
         {
             "command" : "aircrack-ng makeivs.ivs",
@@ -281,6 +381,506 @@
                 "description": "Launch the besside-ng attack with the following options:\n- Attack WPA only.\n- Display verbose output.\n- Use monitor mode interface 'wlan0mon'."
             }
         ],            
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airtun-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "mode": "wIDS",
+                "command": "airtun-ng -a DE:AD:BE:EF:CA:FE -w 1234567890 wlan0mon",
+                "description": "Specify the BSSID of the access point to monitor as 'DE:AD:BE:EF:CA:FE' and its WEP key as '1234567890'. Then execute the airtun-ng tool using the monitor mode interface 'wlan0mon'."
+            }
+        ],                    
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airserv-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "command": "airserv-ng -p 4444 -d wlan0mon -c 6",
+                "description": "Start a server instance on port 4444 using the monitor mode interface 'wlan0mon' on channel 6."
+            }
+        ],                            
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airolib-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "command": "airolib-ng airolib-db --import essid /root/essid.txt",
+                "description": "Specify the name of the database 'airolib-db' to use and import a file containing the ESSIDs of the network(s) targeted from '/root/essid.txt'. If the database does not exist, it will be created."
+            },
+            {
+                "command": "airolib-ng airolib-db --import passwd /usr/share/doc/aircrack-ng/examples/password.lst",
+                "description": "Import any wordlists to use for PMK computation into the 'airolib-db' database."
+            },
+            {
+                "command": "airolib-ng airolib-db --batch",
+                "description": "Use the '--batch' option to compute all PMKs for the networks stored in the 'airolib-db' database."
+            },
+            {
+                "command": "aircrack-ng -r airolib-db /root/wpa.cap",
+                "description": "Use the airolib-ng database with aircrack-ng by specifying the database name 'airolib-db' using the '-r' option when cracking the WPA key from the capture file '/root/wpa.cap'."
+            }
+        ],                                   
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airodump-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "mode": "Monitor all wireless networks, frequency hopping between all wireless channels",
+                "command": "airodump-ng wlan0mon",
+                "description": "Start monitoring all wireless networks and frequency hopping between all wireless channels on the wlan0mon interface."
+            },
+            {
+                "mode": "Sniff on channel 6",
+                "command": "airodump-ng -c 6 -w /root/chan6 wlan0mon",
+                "description": "Sniff on channel 6 via monitor mode interface wlan0mon and save the capture to a file named 'chan6' in the '/root' directory."
+            },
+            {
+                "mode": "Filter for access points by a specific manufacturer",
+                "command": "airodump-ng -d FC:15:B4:00:00:00 -m FF:FF:FF:00:00:00 wlan0mon",
+                "description": "Filter for access points by a specific manufacturer with the OUI 'FC:15:B4' and mask 'FF:FF:FF:00:00:00' on the wlan0mon interface."
+            }
+        ],                                    
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airmon-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "mode": "Show interfaces status",
+                "command": "airmon-ng",
+                "description": "Show the status of wireless interfaces."
+            },
+            {
+                "mode": "Check for interfering processes",
+                "command": "airmon-ng check",
+                "description": "Check for processes that might interfere with Airmon-ng and display them."
+            },
+            {
+                "mode": "Kill interfering processes",
+                "command": "airmon-ng check kill",
+                "description": "Kill processes that might interfere with Airmon-ng."
+            },
+            {
+                "mode": "Enable monitor mode on a wireless interface",
+                "command": "airmon-ng start wlan0 6",
+                "description": "Enable monitor mode on the 'wlan0' interface, fixed on channel 6. A new interface 'wlan0mon' will be created."
+            },
+            {
+                "mode": "Stop monitor mode on a wireless interface",
+                "command": "airmon-ng stop wlan0mon",
+                "description": "Destroy the monitor mode interface 'wlan0mon' and place the wireless interface 'wlan0' back into managed mode."
+            }
+        ],                                    
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "besside-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [],
+        "Usage" : [
+            {
+                "command": "besside-ng -W -v wlan0mon",
+                "description": "Launch the besside-ng attack with the following options:\n- Attack WPA only.\n- Display verbose output.\n- Use monitor mode interface 'wlan0mon'."
+            }
+        ],            
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "aireplay-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [
+            {
+                "flag": "-b bssid",
+                "description": "Filter by MAC address (Access Point)."
+            },
+            {
+                "flag": "-d dmac",
+                "description": "Filter by MAC address (Destination)."
+            },
+            {
+                "flag": "-s smac",
+                "description": "Filter by MAC address (Source)."
+            },
+            {
+                "flag": "-m len",
+                "description": "Filter packets by minimum length."
+            },
+            {
+                "flag": "-n len",
+                "description": "Filter packets by maximum length."
+            },
+            {
+                "flag": "-u type",
+                "description": "Filter packets by frame control type field."
+            },
+            {
+                "flag": "-v subt",
+                "description": "Filter packets by frame control subtype field."
+            },
+            {
+                "flag": "-t tods",
+                "description": "Filter packets by frame control To DS bit."
+            },
+            {
+                "flag": "-f fromds",
+                "description": "Filter packets by frame control From DS bit."
+            },
+            {
+                "flag": "-w iswep",
+                "description": "Filter packets by frame control WEP bit."
+            },
+            {
+                "flag": "-D",
+                "description": "Disable AP detection."
+            },
+            {
+                "flag": "-x nbpps",
+                "description": "Set the number of packets per second for replay."
+            },
+            {
+                "flag": "-p fctrl",
+                "description": "Set the frame control word in hexadecimal for replay."
+            },
+            {
+                "flag": "-a bssid",
+                "description": "Set the Access Point MAC address for replay."
+            },
+            {
+                "flag": "-c dmac",
+                "description": "Set the Destination MAC address for replay."
+            },
+            {
+                "flag": "-h smac",
+                "description": "Set the Source MAC address for replay."
+            },
+            {
+                "flag": "-g value",
+                "description": "Change the ring buffer size (default: 8) for replay."
+            },
+            {
+                "flag": "-F",
+                "description": "Choose the first matching packet."
+            },
+            {
+                "flag": "-e essid",
+                "description": "Set the target AP SSID for fakeauth attack."
+            },
+            {
+                "flag": "-o npckts",
+                "description": "Set the number of packets per burst (0=auto, default: 1) for fakeauth attack."
+            },
+            {
+                "flag": "-q sec",
+                "description": "Set the seconds between keep-alives for fakeauth attack."
+            },
+            {
+                "flag": "-Q",
+                "description": "Send reassociation requests for fakeauth attack."
+            },
+            {
+                "flag": "-y prga",
+                "description": "Set the keystream for shared key authentication for fakeauth attack."
+            },
+            {
+                "flag": "-T n",
+                "description": "Exit after retrying fake auth request n times for fakeauth attack."
+            },
+            {
+                "flag": "-j",
+                "description": "Inject FromDS packets for ARP replay attack."
+            },
+            {
+                "flag": "-k IP",
+                "description": "Set the destination IP in fragments for fragmentation attack."
+            },
+            {
+                "flag": "-l IP",
+                "description": "Set the source IP in fragments for fragmentation attack."
+            },
+            {
+                "flag": "-B",
+                "description": "Activate the bitrate test for test attack."
+            },
+            {
+                "flag": "-i iface",
+                "description": "Capture packets from this interface."
+            },
+            {
+                "flag": "-r file",
+                "description": "Extract packets from this pcap file."
+            },
+            {
+                "flag": "-R",
+                "description": "Disable usage of /dev/rtc."
+            },
+            {
+                "flag": "--ignore-negative-one",
+                "description": "Ignore mismatch of interface's channel, needed for unpatched cfg80211."
+            },
+            {
+                "flag": "--deauth-rc rc",
+                "description": "Set Deauthentication reason code [0-254]. Default: 7."
+            },
+            {
+                "flag": "--deauth count",
+                "description": "Deauthenticate 1 or all stations."
+            },
+            {
+                "flag": "--fakeauth delay",
+                "description": "Fake authentication with AP."
+            },
+            {
+                "flag": "--interactive",
+                "description": "Interactive frame selection."
+            },
+            {
+                "flag": "--arpreplay",
+                "description": "Standard ARP-request replay."
+            },
+            {
+                "flag": "--chopchop",
+                "description": "Decrypt/chopchop WEP packet."
+            },
+            {
+                "flag": "--fragment",
+                "description": "Generate valid keystream."
+            },
+            {
+                "flag": "--caffe-latte",
+                "description": "Query a client for new IVs."
+            },
+            {
+                "flag": "--cfrag",
+                "description": "Fragments against a client."
+            },
+            {
+                "flag": "--migmode",
+                "description": "Attack WPA migration mode."
+            },
+            {
+                "flag": "--test",
+                "description": "Test injection mode"
+            }
+        ],      
+        "Usage" : [
+            {
+                "mode": "Injection Test",
+                "command": "aireplay-ng -9 wlan0mon",
+                "description": "Run the injection test (-9) via the monitor mode interface wlan0mon to check if injection is working."
+            },
+            {
+                "mode": "Deauthentication Attack",
+                "command": "aireplay-ng -0 5 -a 8C:7F:3B:7E:81:B6 -c 00:08:22:B9:41:A1 wlan0mon",
+                "description": "Run the deauthentication attack (-0), sending 5 packets to the wireless access point '8C:7F:3B:7E:81:B6' to deauthenticate a wireless client '00:08:22:B9:41:A1' via the monitor mode interface wlan0mon."
+            },
+            {
+                "mode": "Fake Authentication",
+                "command": "aireplay-ng -1 6000 -e FBI-Van-24 -a F0:F2:49:82:DF:3B -h 3c:46:d8:4e:ef:aa wlan0mon",
+                "description": "Run the fake authentication attack and re-authenticate every 6000 seconds (-1 6000) against the access point 'F0:F2:49:82:DF:3B' with the ESSID 'FBI-Van-24', specifying the MAC address '3c:46:d8:4e:ef:aa', using the monitor mode interface wlan0mon."
+            }
+        ],                  
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airbase-ng",
+        "Description" : [],
+        "Dependencies" : [],
+        "Commands": [
+            {
+                "flag": "-a bssid",
+                "description": "Set the Access Point MAC address for the attack."
+            },
+            {
+                "flag": "-i iface",
+                "description": "Capture packets from the specified interface."
+            },
+            {
+                "flag": "-w WEP key",
+                "description": "Use the specified WEP key to encrypt or decrypt packets."
+            },
+            {
+                "flag": "-h MAC",
+                "description": "Set the source MAC address for MITM (Man-in-the-Middle) mode."
+            },
+            {
+                "flag": "-f disallow",
+                "description": "Disallow specified client MAC addresses (by default, clients are allowed)."
+            },
+            {
+                "flag": "-W 0|1",
+                "description": "Set or don't set the WEP flag in beacons. '0' means don't set, '1' means set. By default, it is set automatically."
+            },
+            {
+                "flag": "-q",
+                "description": "Quiet mode. Suppress printing of statistics."
+            },
+            {
+                "flag": "-v",
+                "description": "Verbose mode. Print more messages for debugging or informational purposes."
+            },
+            {
+                "flag": "-A",
+                "description": "Ad-Hoc Mode. Allows other clients to peer."
+            },
+            {
+                "flag": "-Y in|out|both",
+                "description": "Specify external packet processing direction: incoming, outgoing, or both."
+            },
+            {
+                "flag": "-c channel",
+                "description": "Set the channel on which the Access Point is running."
+            },
+            {
+                "flag": "-X",
+                "description": "Set the hidden ESSID mode."
+            },
+            {
+                "flag": "-s",
+                "description": "Force shared key authentication."
+            },
+            {
+                "flag": "-S",
+                "description": "Set shared key challenge length. By default, it is set to 128."
+            },
+            {
+                "flag": "-L",
+                "description": "Activate the Caffe-Latte WEP attack mode. Use this if the driver cannot send frags."
+            },
+            {
+                "flag": "-N",
+                "description": "Activate the cfrag WEP attack mode. Recommended for WEP attacks."
+            },
+            {
+                "flag": "-x nbpps",
+                "description": "Set the number of packets per second. By default, it is set to 100."
+            },
+            {
+                "flag": "-y",
+                "description": "Disable responses to broadcast probes."
+            },
+            {
+                "flag": "-0",
+                "description": "Set all WPA, WEP, open tags. This option can't be used with -z and -Z."
+            },
+            {
+                "flag": "-z type",
+                "description": "Set WPA1 tags. Available types: 1=WEP40, 2=TKIP, 3=WRAP, 4=CCMP, 5=WEP104."
+            },
+            {
+                "flag": "-Z type",
+                "description": "Set WPA2 tags. Same as -z, but for WPA2."
+            },
+            {
+                "flag": "-V type",
+                "description": "Specify the fake EAPOL type. Available types: 1=MD5, 2=SHA1, 3=auto."
+            },
+            {
+                "flag": "-F prefix",
+                "description": "Write all sent and received frames into a pcap file with the specified prefix."
+            },
+            {
+                "flag": "-P",
+                "description": "Respond to all probes, even when specifying ESSIDs."
+            },
+            {
+                "flag": "-I interval",
+                "description": "Set the beacon interval value in milliseconds."
+            },
+            {
+                "flag": "-C seconds",
+                "description": "Enable beaconing of probed ESSID values. Requires -P option."
+            },
+            {
+                "flag": "-n hex",
+                "description": "Specify a user-specified ANonce when doing the 4-way handshake."
+            }
+        ],
+        "Usage" : [
+            {
+                "mode": "Hirte Attack - Access Point Mode",
+                "command": "airbase-ng -c 6 -e TotallyNotATrap -N -W 1 wlan0mon",
+                "description": "The Hirte attack attempts to retrieve a WEP key via a client. This command creates an access point on channel 6 (-c 6) with the specified ESSID 'TotallyNotATrap'. It uses the cfrag WEP attack (-N) and sets the WEP flag in the beacons (-W 1) on the monitor mode interface wlan0mon."
+            },
+            {
+                "mode": "Caffe Latte Attack - Access Point Mode",
+                "command": "airbase-ng -c 6 -e AlsoNotATrap -L -W 1 wlan0mon",
+                "description": "The Caffe Latte Attack attempts to retrieve a WEP key via a client. This command creates an access point on channel 6 (-c 6) with the specified ESSID 'AlsoNotATrap'. It uses the Caffe Latte WEP attack (-L) and sets the WEP flag in the beacons (-W 1) on the monitor mode interface wlan0mon."
+            }
+        ],                   
+        "Extra-Info" : []
+    },
+    {
+        "Tool_name" : "airdecap-ng",
+        "Description" : [],
+        "Dependencies": [],
+        "Commands" : [
+            {
+                "flag": "-l",
+                "description": "Don't remove the 802.11 header."
+            },
+            {
+                "flag": "-b <bssid>",
+                "description": "Filter by access point MAC address."
+            },
+            {
+                "flag": "-e <essid>",
+                "description": "Specify the target network SSID."
+            },
+            {
+                "flag": "-o <fname>",
+                "description": "Specify the output file for decrypted packets. Default: <src>-dec."
+            },
+            {
+                "flag": "-w <key>",
+                "description": "Specify the target network WEP key in hexadecimal."
+            },
+            {
+                "flag": "-c <fname>",
+                "description": "Specify the output file for corrupted WEP packets. Default: <src>-bad."
+            },
+            {
+                "flag": "-p <pass>",
+                "description": "Specify the target network WPA passphrase."
+            },
+            {
+                "flag": "-k <pmk>",
+                "description": "Specify the WPA Pairwise Master Key in hexadecimal."
+            }
+        ],        
+        "Usage" :  [
+            {
+                "mode": "Decrypt WPA Capture",
+                "command": "airdecap-ng -e test -p biscotte wpa.cap",
+                "description": "With a given ESSID 'test' and password 'biscotte', decrypt the specified WPA capture file 'wpa.cap'. This command attempts to decrypt the WPA packets using the provided ESSID and password."
+            },
+            {
+                "mode": "Verify Decryption",
+                "command": "tcpdump -r wpa-dec.cap",
+                "description": "Verify the decryption of the WPA capture by reading the decrypted capture file 'wpa-dec.cap' using tcpdump. This command reads the decrypted packets after attempting decryption with airdecap-ng."
+            }
+        ],                  
         "Extra-Info" : []
     }
 ]
