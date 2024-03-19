@@ -1,0 +1,1096 @@
+Tool Name: Above
+Description: Contains an invisible protocol sniffer for finding vulnerabilities in the network, designed for pentesters and security professionals,It is based entirely on network traffic analysis, so it does not make any noise on the air. Above allows pentesters to automate the process of finding vulnerabilities in network hardware. Discovery protocols, dynamic routing, FHRP, STP, LLMNR/NBT-NS, etc.
+Dependencies: ['python3', 'python3-colorama', 'python3-scapy']
+Commands:
+	Flag: -h
+	Description: help
+
+	Flag: --interface
+	Description: Specify the interface
+
+	Flag: --output
+	Description: Specify the output pcap file to record traffic
+
+	Flag: --timer
+	Description: Specify the timer value (seconds)
+
+	Flag: --input-pcap
+	Description: Specify the input pcap file to analyze traffic
+
+Usage:
+	Command: sudo ip link set eth0 promisc on
+	Description: Enable promiscuous mode on the eth0 interface.
+
+	Command: above --input-pcap dump.pcap
+	Description: Execute the 'above' command with input from the dump.pcap file.
+
+	Command: Passive ARP : above --interface eth0 --passive-arp
+	Description: Execute the 'above' command with passive ARP mode on the eth0 interface.
+
+Extra Information: Detects upto 22 protocols
+
+Tool Name: Aesfix
+Description: ['This', 'program', 'implements', 'a', 'method', 'for', 'rectifying', 'bit', 'errors', 'within', 'an', 'AES', 'key', 'schedule', ',', 'which', 'is', 'designed', 'to', 'be', 'employed', 'in', 'conjunction', 'with', 'the', 'output', 'generated', 'by', 'the', '"aeskeyfind"', 'program', '.', 'It', 'specifically', 'targets', 'AES-128', 'key', 'schedules', 'and', 'is', 'capable', 'of', 'rectifying', 'unidirectional', '1->0', 'bit', 'errors', '.', 'While', 'prioritizing', 'readability', 'over', 'performance', ',', 'it', 'serves', 'various', 'purposes', ',', 'including', 'forensic', 'investigations', '.']
+Dependencies: ['libc6', 'libgcc-s1', 'libstdc++6']
+Commands:
+Tool Name: aeskeyfind
+Description: ['this', 'program', 'illustrates', 'automatic', 'techniques', 'for', 'locating', '128bit', 'and', '256bit', 'aes', 'keys', 'in', 'a', 'captured', 'memory', 'image', 'the', 'program', 'uses', 'various', 'algorithms', 'and', 'also', 'performs', 'a', 'simple', 'entropy', 'test', 'to', 'filter', 'out', 'blocks', 'that', 'are', 'not', 'keys', 'it', 'counts', 'the', 'number', 'of', 'repeated', 'bytes', 'and', 'skips', 'blocks', 'that', 'have', 'too', 'many', 'repeats', 'this', 'method', 'works', 'even', 'if', 'several', 'bits', 'of', 'the', 'key', 'schedule', 'have', 'been', 'corrupted', 'due', 'to', 'memory', 'decay', 'this', 'package', 'is', 'useful', 'to', 'several', 'activities', 'as', 'forensics', 'investigations']
+Dependencies: ['libc6']
+Commands:
+	Flag: -v
+	Description: verbose Output
+
+	Flag: -q
+	Description: dont display a progress bar
+
+	Flag: -t THRESHOLD
+	Description: sets the maximum number of bit errors allowed in a candidate key schedule (default = 10)
+
+	Flag: -h
+	Description: help
+
+Usage:
+	Command: aeskeyfind [OPTION]... MEMORY-IMAGE
+	Description: Search for AES keys in a memory image.
+
+Extra Information: ['locates', '128bit', 'and', '256bit', 'aes', 'keys', 'in', 'a', 'captured', 'memory', 'image']
+
+Tool Name: affcat
+Description: ['the', 'advanced', 'forensic', 'format', 'aff', 'is', 'ondisk', 'format', 'for', 'storing', 'computer', 'forensic', 'information', 'critical', 'features', 'of', 'aff', 'include', 'aff', 'allows', 'you', 'to', 'store', 'both', 'computer', 'forensic', 'data', 'and', 'associated', 'metadata', 'in', 'one', 'or', 'more', 'files', 'aff', 'allows', 'files', 'to', 'be', 'digital', 'signed', 'to', 'provide', 'for', 'chainofcustody', 'and', 'longterm', 'file', 'integrityaff', 'allows', 'for', 'forensic', 'disk', 'images', 'to', 'stored', 'encrypted', 'and', 'decrypted', 'onthefly', 'for', 'processing', 'this', 'allows', 'disk', 'images', 'containing', 'privacy', 'sensitive', 'material', 'to', 'be', 'stored', 'on', 'the', 'internet']
+Dependencies: ['libaffilb0v5', 'libc6', 'libxepat1', 'libfuse2', 'libgcc-s1', 'libssl3', 'libstdc++6']
+Commands:
+	Flag: -s name
+	Description: Just output segment name
+
+	Flag: -p ###
+	Description: just output data page number ###
+
+	Flag: -S ###
+	Description: Just output data sector ### (assumes 512-byte sectors). Sector #0 is first
+
+	Flag: -q
+	Description: quiet; don't print to STDERR if a page is skipped
+
+	Flag: -n
+	Description: noisy; tell when pages are skipped.
+
+	Flag: -l
+	Description: List all of the segment names
+
+	Flag: -L
+	Description: List segment names, lengths, and args
+
+	Flag: -d
+	Description: debug. Print the page numbers to stderr as data goes to stdout
+
+	Flag: -b
+	Description: Output BADFALG for bad blocks (default is NULLs)
+
+	Flag: -v
+	Description: Just print the version number and exit.
+
+	Flag: -r offset:count
+	Description: seek to offset and output count characters in each file; may be repeated
+
+Usage:
+	Command: affcat [options] infile [... more infiles]
+	Description: Concatenate and display the contents of one or more AFF files.
+
+Extra Information: ['the', 'aff', 'toolkit', 'provides', 'these', 'executables', 'affcat', 'affcompare', 'affconvert', 'affcopy', 'affcrypto', 'affdiskprint', 'affinfo', 'affix', 'affrecover', 'affsegment', 'affsign', 'affstats', 'affuse', 'affverify', 'and', 'affxml']
+
+Tool Name: affcompare
+Description: ['reports', 'if', 'file', 'was', 'successfully', 'copied', 'to', 'amazon', 's3', 'checking', 'only', 'for', 'existence', 'not', 'reading', 'back', 'the', 'bytesbecause', 'all', 'writes', 'to', 's3', 'are', 'validated', 'by', 'the', 'md5', 'of', 'the', 'object']
+Dependencies: ['libaffilb0v5', 'libc6', 'libxepat1', 'libfuse2', 'libgcc-s1', 'libssl3', 'libstdc++6']
+Commands:
+	Flag: -p
+	Description: report about the results of preening
+
+	Flag: -e
+	Description: Just report about existence (use with -r)
+
+	Flag: -s
+	Description: Just see if all of the segments are present, but don't validate the contents. (Primarily for use with Amazon S3)
+
+	Flag: -V
+	Description: just print the version number and exit
+
+	Flag: -v
+	Description: Verbose; each file as it is compared.
+
+	Flag: -q
+	Description: Quiet. No output except for errors
+
+	Flag: -a
+	Description: print what's the same (all)
+
+	Flag: -b
+	Description: print the numbers of differing sectors
+
+	Flag: -c
+	Description: print the contents of differing sectors
+
+	Flag: -m
+	Description: Just report about the data (ignore metadata)
+
+	Flag: -P ###
+	Description: Just examine the differences on page ###
+
+	Flag: -r dir1 dir2
+	Description: recursively compare what's in dir1 with dir2, and report what's in dir1 that's not in dir2
+
+Usage:
+	Command: affcompare file1.aff file2.aff
+	Description: Compare two AFF files.
+
+	Command: affcompare f1.aff f2.aff dir1/
+	Description: Compare two AFF files or directories.
+
+	Command: affcompare -b img file.aff
+	Description: Compare the contents of two files (binary comparison).
+
+	Command: affcompare -b img file1.aff file2.aff
+	Description: Compare two files (binary comparison).
+
+	Command: affcompare -re dir1 dir2
+	Description: Recursively compare the contents of two directories.
+
+	Command: affcompare -rse dir1 s3:///
+	Description: Recursively compare the contents of a local directory with a directory on Amazon S3.
+
+	Command: affcompare -rs dir1 s3:///
+	Description: Recursively compare the contents of a directory on Amazon S3 with a local directory.
+
+Extra Information: ['compare', 'the', 'contents', 'of', 'an', 'iso', 'file', 'to', 'an', 'aff', 'file']
+
+Tool Name: affconvert
+Description: []
+Dependencies: ['libaffilb0v5', 'libc6', 'libxepat1']
+Commands:
+	Flag: -q
+	Description: Quiet mode. Don't ask questions, don't print status.
+
+	Flag: -V
+	Description: Just print the version number and exit.
+
+	Flag: -a<ext>
+	Description: Use 'ext' for aff files (default is aff; afd for AFD files).
+
+	Flag: -L
+	Description: Use the LZMA compression algorithm (better but slower).
+
+	Flag: -Mn[kmg]
+	Description: Set maximum size of output file. Suffix with k, m or g. Use with -o.
+
+	Flag: -O<dir>
+	Description: Use 'dir' as the output directory. Example: -Otest. Note that you need to create the directory.
+
+	Flag: -o<dir>.afd
+	Description: Output to 'dir'.afd (can only convert one at a time). Consider AFF if file ends using .aff. Otherwise assumes raw. The directory must have .afd as extension in name.
+
+	Flag: -s<n>
+	Description: Set the image_pagesize as 'n' (default 16777216).
+
+Usage:
+	Command: affconvert [options] file1 [... files]
+	Description: 
+
+	Command: affconvert file1.raw
+	Description: Convert file.rqw into file.aff
+
+	Command: affconvert -r file1.aff
+	Description: Convert file.aff to file.raw
+
+	Command: affconvert -M4g -odvd.afd bigfile.aff
+	Description: Split an AFF File into 4GB chunks for archiving into DVD
+
+Extra Information: ['aff', 'is', 'an', 'open', 'and', 'extensible', 'file', 'format', 'to', 'store', 'disk', 'images', 'and', 'associated', 'metadata', 'it', 'is', 'useful', 'in', 'several', 'scenaries', 'as', 'computer', 'forensics', 'investiga‐tions']
+
+Tool Name: Affinfo
+Description: []
+Dependencies: ['libaffilb0v5', 'libc6', 'libxepat1']
+Commands:
+	Flag: -a
+	Description: print ALL segments (normally data segments are suppressed)
+
+	Flag: -b
+	Description: print how many bad blocks in each segment (implies -a)
+
+	Flag: -i
+	Description: identify the files, don't do info on them.
+
+	Flag: -w
+	Description: wide output; print more than 1 line if necessary.
+
+	Flag: -s segment
+	Description: Just print information about 'segment'. (may be repeated)
+
+	Flag: -m
+	Description: validate MD5 hash of entire image
+
+	Flag: -S
+	Description: validate SHA1 hash of entire image
+
+	Flag: -v
+	Description: validate the hash of each page (if present)
+
+	Flag: -y
+	Description: don't print segments of lengths 16 and 20 as hex
+
+	Flag: -p<passphrase>
+	Description: Specify <passphrase> to decrypt file
+
+	Flag: -l
+	Description: Just print the segment names and exit
+
+	Flag: -V
+	Description: Just print the version number and exit.
+
+	Flag: -X
+	Description: no data preview; just print the segment names
+
+	Flag: -x
+	Description: print binary values in hex (default is ASCII)
+
+	Flag: -d
+	Description: debug
+
+	Flag: -A
+	Description: if infile is a device, print the number of sectors and sector size to stdout in XML. Otherwise error do this
+
+Usage:
+	Command: affinfo [options] infile
+	Description: 
+
+
+Tool Name: aircrack-ng
+Description: ['aircrackng', 'is', 'a', 'complete', 'suite', 'of', 'tools', 'to', 'assess', 'wifi', 'network', 'securityit', 'focuses', 'on', 'different', 'areas', 'of', 'wifi', 'securitymonitoring', 'packet', 'capture', 'and', 'export', 'of', 'data', 'to', 'text', 'files', 'for', 'further', 'processing', 'by', 'third', 'party', 'tools', 'attacking', 'replay', 'attacks', 'deauthentication', 'fake', 'access', 'points', 'and', 'others', 'via', 'packet', 'injection', 'testing', 'checking', 'wifi', 'cards', 'and', 'driver', 'capabilities', 'capture', 'and', 'injection', 'cracking', 'wep', 'and', 'wpa', 'psk', 'wpa', '1', 'and', '2all', 'tools', 'are', 'command', 'line', 'which', 'allows', 'for', 'heavy', 'scripting', 'a', 'lot', 'of', 'guis', 'have', 'taken', 'advantage', 'of', 'this', 'feature', 'it', 'works', 'primarily', 'on', 'linux', 'but', 'also', 'windows', 'macos', 'freebsd', 'openbsd', 'netbsd', 'as', 'well', 'as', 'solaris', 'and', 'even', 'ecomstation', '2']
+Dependencies: ['ethtool', 'hwloc', 'iw', 'libc6', 'libgcc-s1', 'libgcrypt20', 'libhwloc15', 'libnl-3-200', 'libnl-genl-3-200', 'libpcap0.8', 'libprce3', 'libsqlite3-0', 'libstdc++6', 'python3', 'rfkill', 'usbutils', 'wireless-tools', 'zlib1g']
+Commands:
+	Flag: -a <amode>
+	Description: Force attack mode: 1/WEP, 2/WPA-PSK.
+
+	Flag: -e <essid>
+	Description: Specify the target network identifier (ESSID).
+
+	Flag: -b <bssid>
+	Description: Specify the target access point's MAC address.
+
+	Flag: -p <nbcpu>
+	Description: Specify the number of CPUs to use. By default, all CPUs are used.
+
+	Flag: -q
+	Description: Enable quiet mode, suppressing status output.
+
+	Flag: -C <macs>
+	Description: Merge the given Access Points to a virtual one.
+
+	Flag: -l <file>
+	Description: Write the key to the specified file, overwriting it if it exists.
+
+	Flag: -c
+	Description: Search alpha-numeric characters only.
+
+	Flag: -t
+	Description: Search binary coded decimal characters only.
+
+	Flag: -h
+	Description: Search the numeric key for Fritz!BOX.
+
+	Flag: -d <mask>
+	Description: Use masking of the key (e.g., A1:XX:CF:YY).
+
+	Flag: -m <maddr>
+	Description: Specify the MAC address to filter usable packets.
+
+	Flag: -n <nbits>
+	Description: Specify the WEP key length: 64/128/152/256/512.
+
+	Flag: -i <index>
+	Description: Specify the WEP key index (1 to 4). Default: any.
+
+	Flag: -f <fudge>
+	Description: Specify the bruteforce fudge factor. Default: 2.
+
+	Flag: -k <korek>
+	Description: Disable one attack method (1 to 17).
+
+	Flag: -x or -x0
+	Description: Disable bruteforce for last keybytes.
+
+	Flag: -x1
+	Description: Enable last keybyte bruteforcing (default).
+
+	Flag: -x2
+	Description: Enable last 2 keybytes bruteforcing.
+
+	Flag: -X
+	Description: Disable bruteforce multithreading.
+
+	Flag: -y
+	Description: Enable experimental single bruteforce mode.
+
+	Flag: -K
+	Description: Use only old KoreK attacks (pre-PTW).
+
+	Flag: -s
+	Description: Show the key in ASCII while cracking.
+
+	Flag: -M <num>
+	Description: Specify the maximum number of IVs to use.
+
+	Flag: -D
+	Description: WEP decloak, skip broken keystreams.
+
+	Flag: -P <num>
+	Description: PTW debug: 1: disable Klein, 2: PTW.
+
+	Flag: -1
+	Description: Run only 1 try to crack the key with PTW.
+
+	Flag: -V
+	Description: Run in visual inspection mode.
+
+Usage:
+	Command: aircrack-ng all-ivs.ivs
+	Description: To have aircrack-ng conduct a WEP key attack on a capture file, pass it the filename, either in .ivs or .cap/.pcap format. Aircrack-ng 1.4
+
+	Command: aircrack-ng -w password.lst wpa.cap
+	Description: Specify the wordlist to use (-w password.lst) and the path to the capture file (wpa.cap) containing at least one 4-way handshake.
+
+
+Tool Name: airgraph-ng
+Description: []
+Dependencies: ['ethtool', 'hwloc', 'iw', 'libc6', 'libgcc-s1', 'libgcrypt20', 'libhwloc15', 'libnl-3-200', 'libnl-genl-3-200', 'libpcap0.8', 'libprce3', 'libsqlite3-0', 'libstdc++6', 'python3', 'rfkill', 'usbutils', 'wireless-tools', 'zlib1g']
+Commands:
+	Flag: -i dump-01.csv
+	Description: Specify the input file to use.
+
+	Flag: -o capr.png
+	Description: Specify the output file to generate.
+
+	Flag: -g CAPR
+	Description: Specify the graph type.
+
+Usage:
+	Command: airgraph-ng -i dump-01.csv -o capr.png -g CAPR
+	Description: Specify the input file to use (-i dump-01.csv), the output file to generate (-o capr.png) and the graph type (-g CAPR):
+
+	Command: airgraph-ng -i dump-01.csv -o cpg.png -g CPG
+	Description: Creating your Graph using, dump-01.csv and writing to, cpg.png
+
+
+Tool Name: wpaclean
+Description: []
+Dependencies: []
+Usage:
+	Command: /usr/share/doc/aircrack-ng/examples# wpaclean /root/handshakes.cap wpa-psk-linksys.cap wpa.cap
+	Description: Parse the provided capture files (wpa-psk-linksys.cap wpa.cap) and save any 4-way handshakes to a new file (/root/handshakes.cap):
+
+
+Tool Name: wesside-ng
+Description: []
+Dependencies: []
+Usage:
+	Command: wesside-ng -i wlan0mon -v de:ad:be:ef:ca:fe
+	Description: Use the specified monitor mode interface (-i wlan0mon) and target a single BSSID (-v de:ad:be:ef:ca:fe)
+
+
+Tool Name: makeivs-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -b <bssid>
+	Description: Set the access point MAC address.
+
+	Flag: -f <num>
+	Description: Set the number of the first IV.
+
+	Flag: -k <key>
+	Description: Set the target network WEP key in hexadecimal format.
+
+	Flag: -s <num>
+	Description: Set the seed used to set up the random generator.
+
+	Flag: -w <file>
+	Description: Set the filename to write IVs into.
+
+	Flag: -c <num>
+	Description: Set the number of IVs to generate.
+
+	Flag: -d <num>
+	Description: Set the percentage of duplicate IVs.
+
+	Flag: -e <num>
+	Description: Set the percentage of erroneous keystreams.
+
+	Flag: -l <num>
+	Description: Set the length of keystreams.
+
+	Flag: -n
+	Description: Ignore weak IVs.
+
+	Flag: -p
+	Description: Use the PRNG algorithm to generate IVs.
+
+Usage:
+	Command: makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs
+	Description: Specify a BSSID (-b de:ad:be:ef:ca:fe), WEP key (-k 123456789ABCDEF123456789AB), and output filename (-w makeivs.ivs)
+
+	Command: aircrack-ng makeivs.ivs
+	Description: Testing the Cracked File for data
+
+
+Tool Name: ivstools
+Description: []
+Dependencies: []
+Usage:
+	Command: ivstools --convert wep_64_ptw.cap out.ivs
+	Description: Strip out the initialization vectors of the provided .pcap capture and save them to a new file
+
+	Command: ivstools --merge *.ivs /root/all-ivs.ivs
+	Description: Merge multiple IVS files into a single IVS file named 'all-ivs.ivs' located in the '/root' directory.
+
+
+Tool Name: easside-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -h
+	Description: Display this help screen.
+
+	Flag: -v <victim mac>
+	Description: Set the victim BSSID (MAC address).
+
+	Flag: -m <src mac>
+	Description: Set the source MAC address.
+
+	Flag: -i <ip>
+	Description: Set the source IP address.
+
+	Flag: -r <router ip>
+	Description: Set the router IP address.
+
+	Flag: -s <buddy ip>
+	Description: Set the Buddy-ng IP address (mandatory).
+
+	Flag: -f <iface>
+	Description: Set the interface to use (mandatory).
+
+	Flag: -c <channel>
+	Description: Lock the wireless card to this channel.
+
+	Flag: -n
+	Description: Determine only the Internet IP address.
+
+Usage:
+	Command: buddy-ng
+	Description: Run the buddy-ng tool.
+
+	Command: easside-ng -v de:ad:be:ef:ca:fe -m 3c:46:d8:4e:ef:aa -s 127.0.0.1 -f wlan0mon -c 6
+	Description: Launch the Easside-ng attack with the following options:
+- Set the victim MAC address to 'de:ad:be:ef:ca:fe'.
+- Set the MAC address of the access point to '3c:46:d8:4e:ef:aa'.
+- Set the source IP address to '127.0.0.1'.
+- Use the wireless interface 'wlan0mon'.
+- Set the channel to '6'.
+
+
+Tool Name: besside-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -b <victim mac>
+	Description: Set the victim BSSID (MAC address).
+
+	Flag: -R <victim ap regex>
+	Description: Set the victim ESSID (network name) regex pattern. PCRE (Perl Compatible Regular Expressions) is required.
+
+	Flag: -s <WPA server>
+	Description: Upload the wpa.cap file for cracking.
+
+	Flag: -c <chan>
+	Description: Set the channel lock.
+
+	Flag: -p <pps>
+	Description: Set the flood rate (packets per second).
+
+	Flag: -W
+	Description: Enable WPA mode only.
+
+	Flag: -v
+	Description: Verbose output. Use multiple times (-vv) for increased verbosity.
+
+Usage:
+	Command: besside-ng -W -v wlan0mon
+	Description: Launch the besside-ng attack with the following options:
+- Attack WPA only.
+- Display verbose output.
+- Use monitor mode interface 'wlan0mon'.
+
+
+Tool Name: airtun-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -x nbpps
+	Description: Number of packets per second (default: 100).
+
+	Flag: -a bssid
+	Description: Set Access Point MAC address. In WDS Mode, this sets the Receiver.
+
+	Flag: -i iface
+	Description: Capture packets from this interface.
+
+	Flag: -y file
+	Description: Read PRGA from this file.
+
+	Flag: -w wepkey
+	Description: Use this WEP-KEY to encrypt packets.
+
+	Flag: -p pass
+	Description: Use this WPA passphrase to decrypt packets (use with -a and -e).
+
+	Flag: -e essid
+	Description: Target network SSID (use with -p).
+
+	Flag: -t tods
+	Description: Send frames to AP (1) or to client (0) or tunnel them into a WDS/Bridge (2).
+
+	Flag: -r file
+	Description: Read frames out of pcap file.
+
+	Flag: -h MAC
+	Description: Source MAC address.
+
+	Flag: -s transmitter
+	Description: Set Transmitter MAC address for WDS Mode.
+
+	Flag: -b
+	Description: Bidirectional mode. This enables communication in Transmitter's AND Receiver's networks. Works only if you can see both stations.
+
+	Flag: --repeat
+	Description: Activates repeat mode.
+
+	Flag: --bssid <mac>
+	Description: BSSID to repeat.
+
+	Flag: --netmask <mask>
+	Description: Netmask for BSSID filter.
+
+Usage:
+	Command: airtun-ng -a DE:AD:BE:EF:CA:FE -w 1234567890 wlan0mon
+	Description: Specify the BSSID of the access point to monitor as 'DE:AD:BE:EF:CA:FE' and its WEP key as '1234567890'. Then execute the airtun-ng tool using the monitor mode interface 'wlan0mon'.
+
+
+Tool Name: airserv-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -h
+	Description: Display this help screen.
+
+	Flag: -p <port>
+	Description: TCP port to listen on (default: 666).
+
+	Flag: -d <iface>
+	Description: Wifi interface to use.
+
+	Flag: -c <chan>
+	Description: Channel to use.
+
+	Flag: -v <level>
+	Description: Debug level (1 to 3; default: 1).
+
+Usage:
+	Command: airserv-ng -p 4444 -d wlan0mon -c 6
+	Description: Start a server instance on port 4444 using the monitor mode interface 'wlan0mon' on channel 6.
+
+
+Tool Name: airolib-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: --stats
+	Description: Output information about the database.
+
+	Flag: --sql <sql>
+	Description: Execute the specified SQL statement.
+
+	Flag: --clean [all]
+	Description: Clean the database from old junk. Use 'all' to also reduce filesize if possible and run an integrity check.
+
+	Flag: --batch
+	Description: Start batch-processing all combinations of ESSIDs and passwords.
+
+	Flag: --verify [all]
+	Description: Verify a set of randomly chosen PMKs. If 'all' is given, all invalid PMKs will be deleted.
+
+	Flag: --import [essid|passwd] <file>
+	Description: Import a text file as a list of ESSIDs or passwords.
+
+	Flag: --import cowpatty <file>
+	Description: Import a cowpatty file.
+
+	Flag: --export cowpatty <essid> <file>
+	Description: Export to a cowpatty file.
+
+Usage:
+	Command: airolib-ng airolib-db --import essid /root/essid.txt
+	Description: Specify the name of the database 'airolib-db' to use and import a file containing the ESSIDs of the network(s) targeted from '/root/essid.txt'. If the database does not exist, it will be created.
+
+	Command: airolib-ng airolib-db --import passwd /usr/share/doc/aircrack-ng/examples/password.lst
+	Description: Import any wordlists to use for PMK computation into the 'airolib-db' database.
+
+	Command: airolib-ng airolib-db --batch
+	Description: Use the '--batch' option to compute all PMKs for the networks stored in the 'airolib-db' database.
+
+	Command: aircrack-ng -r airolib-db /root/wpa.cap
+	Description: Use the airolib-ng database with aircrack-ng by specifying the database name 'airolib-db' using the '-r' option when cracking the WPA key from the capture file '/root/wpa.cap'.
+
+
+Tool Name: airodump-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: --ivs
+	Description: Save only captured IVs.
+
+	Flag: --gpsd
+	Description: Use GPSd.
+
+	Flag: --write <prefix>
+	Description: Dump file prefix.
+
+	Flag: -w
+	Description: Same as --write.
+
+	Flag: --beacons
+	Description: Record all beacons in dump file.
+
+	Flag: --update <secs>
+	Description: Display update delay in seconds.
+
+	Flag: --showack
+	Description: Print ack/cts/rts statistics.
+
+	Flag: -h
+	Description: Hide known stations for --showack.
+
+	Flag: -f <msecs>
+	Description: Time in milliseconds between hopping channels.
+
+	Flag: --berlin <secs>
+	Description: Time before removing the AP/client from the screen when no more packets are received. Default: 120 seconds.
+
+	Flag: -r <file>
+	Description: Read packets from that file.
+
+	Flag: -T
+	Description: While reading packets from a file, simulate the arrival rate of them as if they were 'live'.
+
+	Flag: -x <msecs>
+	Description: Active Scanning Simulation.
+
+	Flag: --manufacturer
+	Description: Display manufacturer from IEEE OUI list.
+
+	Flag: --uptime
+	Description: Display AP Uptime from Beacon Timestamp.
+
+	Flag: --wps
+	Description: Display WPS information (if any).
+
+	Flag: --output-format <formats>
+	Description: Output format. Possible values: pcap, ivs, csv, gps, kismet, netxml, logcsv.
+
+	Flag: --ignore-negative-one
+	Description: Removes the message that says fixed channel <interface>: -1.
+
+	Flag: --write-interval <seconds>
+	Description: Output file(s) write interval in seconds.
+
+	Flag: --background <enable>
+	Description: Override background detection.
+
+	Flag: -n <int>
+	Description: Minimum AP packets received before displaying it.
+
+	Flag: --encrypt <suite>
+	Description: Filter APs by cipher suite.
+
+	Flag: --netmask <netmask>
+	Description: Filter APs by mask.
+
+	Flag: --bssid <bssid>
+	Description: Filter APs by BSSID.
+
+	Flag: --essid <essid>
+	Description: Filter APs by ESSID.
+
+	Flag: --essid-regex <regex>
+	Description: Filter APs by ESSID using a regular expression.
+
+	Flag: -a
+	Description: Filter unassociated clients.
+
+	Flag: --ht20
+	Description: Set channel to HT20 (802.11n).
+
+	Flag: --ht40-
+	Description: Set channel to HT40- (802.11n).
+
+	Flag: --ht40+
+	Description: Set channel to HT40+ (802.11n).
+
+	Flag: --channel <channels>
+	Description: Capture on specific channels.
+
+	Flag: --band <abg>
+	Description: Band on which airodump-ng should hop.
+
+	Flag: -C <frequencies>
+	Description: Use these frequencies in MHz to hop.
+
+	Flag: --cswitch <method>
+	Description: Set channel switching method. 0: FIFO (default), 1: Round Robin, 2: Hop on last.
+
+	Flag: -s
+	Description: Same as --cswitch.
+
+Usage:
+	Command: airodump-ng wlan0mon
+	Description: Start monitoring all wireless networks and frequency hopping between all wireless channels on the wlan0mon interface.
+
+	Command: airodump-ng -c 6 -w /root/chan6 wlan0mon
+	Description: Sniff on channel 6 via monitor mode interface wlan0mon and save the capture to a file named 'chan6' in the '/root' directory.
+
+	Command: airodump-ng -d FC:15:B4:00:00:00 -m FF:FF:FF:00:00:00 wlan0mon
+	Description: Filter for access points by a specific manufacturer with the OUI 'FC:15:B4' and mask 'FF:FF:FF:00:00:00' on the wlan0mon interface.
+
+
+Tool Name: airmon-ng
+Description: []
+Dependencies: []
+Usage:
+	Command: airmon-ng
+	Description: Show the status of wireless interfaces.
+
+	Command: airmon-ng check
+	Description: Check for processes that might interfere with Airmon-ng and display them.
+
+	Command: airmon-ng check kill
+	Description: Kill processes that might interfere with Airmon-ng.
+
+	Command: airmon-ng start wlan0 6
+	Description: Enable monitor mode on the 'wlan0' interface, fixed on channel 6. A new interface 'wlan0mon' will be created.
+
+	Command: airmon-ng stop wlan0mon
+	Description: Destroy the monitor mode interface 'wlan0mon' and place the wireless interface 'wlan0' back into managed mode.
+
+
+Tool Name: besside-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -b <victim mac>
+	Description: Specify the Victim BSSID.
+
+	Flag: -R <victim ap regex>
+	Description: Specify the Victim ESSID regex (requires PCRE).
+
+	Flag: -s <WPA server>
+	Description: Upload wpa.cap for cracking.
+
+	Flag: -c <chan>
+	Description: Channel lock.
+
+	Flag: -p <pps>
+	Description: Set flood rate.
+
+	Flag: -W
+	Description: Attack WPA only.
+
+	Flag: -v
+	Description: Verbose output. Use -vv for more verbosity.
+
+Usage:
+	Command: besside-ng -W -v wlan0mon
+	Description: Launch the besside-ng attack with the following options:
+- Attack WPA only.
+- Display verbose output.
+- Use monitor mode interface 'wlan0mon'.
+
+
+Tool Name: aireplay-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -b bssid
+	Description: Filter by MAC address (Access Point).
+
+	Flag: -d dmac
+	Description: Filter by MAC address (Destination).
+
+	Flag: -s smac
+	Description: Filter by MAC address (Source).
+
+	Flag: -m len
+	Description: Filter packets by minimum length.
+
+	Flag: -n len
+	Description: Filter packets by maximum length.
+
+	Flag: -u type
+	Description: Filter packets by frame control type field.
+
+	Flag: -v subt
+	Description: Filter packets by frame control subtype field.
+
+	Flag: -t tods
+	Description: Filter packets by frame control To DS bit.
+
+	Flag: -f fromds
+	Description: Filter packets by frame control From DS bit.
+
+	Flag: -w iswep
+	Description: Filter packets by frame control WEP bit.
+
+	Flag: -D
+	Description: Disable AP detection.
+
+	Flag: -x nbpps
+	Description: Set the number of packets per second for replay.
+
+	Flag: -p fctrl
+	Description: Set the frame control word in hexadecimal for replay.
+
+	Flag: -a bssid
+	Description: Set the Access Point MAC address for replay.
+
+	Flag: -c dmac
+	Description: Set the Destination MAC address for replay.
+
+	Flag: -h smac
+	Description: Set the Source MAC address for replay.
+
+	Flag: -g value
+	Description: Change the ring buffer size (default: 8) for replay.
+
+	Flag: -F
+	Description: Choose the first matching packet.
+
+	Flag: -e essid
+	Description: Set the target AP SSID for fakeauth attack.
+
+	Flag: -o npckts
+	Description: Set the number of packets per burst (0=auto, default: 1) for fakeauth attack.
+
+	Flag: -q sec
+	Description: Set the seconds between keep-alives for fakeauth attack.
+
+	Flag: -Q
+	Description: Send reassociation requests for fakeauth attack.
+
+	Flag: -y prga
+	Description: Set the keystream for shared key authentication for fakeauth attack.
+
+	Flag: -T n
+	Description: Exit after retrying fake auth request n times for fakeauth attack.
+
+	Flag: -j
+	Description: Inject FromDS packets for ARP replay attack.
+
+	Flag: -k IP
+	Description: Set the destination IP in fragments for fragmentation attack.
+
+	Flag: -l IP
+	Description: Set the source IP in fragments for fragmentation attack.
+
+	Flag: -B
+	Description: Activate the bitrate test for test attack.
+
+	Flag: -i iface
+	Description: Capture packets from this interface.
+
+	Flag: -r file
+	Description: Extract packets from this pcap file.
+
+	Flag: -R
+	Description: Disable usage of /dev/rtc.
+
+	Flag: --ignore-negative-one
+	Description: Ignore mismatch of interface's channel, needed for unpatched cfg80211.
+
+	Flag: --deauth-rc rc
+	Description: Set Deauthentication reason code [0-254]. Default: 7.
+
+	Flag: --deauth count
+	Description: Deauthenticate 1 or all stations.
+
+	Flag: --fakeauth delay
+	Description: Fake authentication with AP.
+
+	Flag: --interactive
+	Description: Interactive frame selection.
+
+	Flag: --arpreplay
+	Description: Standard ARP-request replay.
+
+	Flag: --chopchop
+	Description: Decrypt/chopchop WEP packet.
+
+	Flag: --fragment
+	Description: Generate valid keystream.
+
+	Flag: --caffe-latte
+	Description: Query a client for new IVs.
+
+	Flag: --cfrag
+	Description: Fragments against a client.
+
+	Flag: --migmode
+	Description: Attack WPA migration mode.
+
+	Flag: --test
+	Description: Test injection mode
+
+Usage:
+	Command: aireplay-ng -9 wlan0mon
+	Description: Run the injection test (-9) via the monitor mode interface wlan0mon to check if injection is working.
+
+	Command: aireplay-ng -0 5 -a 8C:7F:3B:7E:81:B6 -c 00:08:22:B9:41:A1 wlan0mon
+	Description: Run the deauthentication attack (-0), sending 5 packets to the wireless access point '8C:7F:3B:7E:81:B6' to deauthenticate a wireless client '00:08:22:B9:41:A1' via the monitor mode interface wlan0mon.
+
+	Command: aireplay-ng -1 6000 -e FBI-Van-24 -a F0:F2:49:82:DF:3B -h 3c:46:d8:4e:ef:aa wlan0mon
+	Description: Run the fake authentication attack and re-authenticate every 6000 seconds (-1 6000) against the access point 'F0:F2:49:82:DF:3B' with the ESSID 'FBI-Van-24', specifying the MAC address '3c:46:d8:4e:ef:aa', using the monitor mode interface wlan0mon.
+
+
+Tool Name: airbase-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -a bssid
+	Description: Set the Access Point MAC address for the attack.
+
+	Flag: -i iface
+	Description: Capture packets from the specified interface.
+
+	Flag: -w WEP key
+	Description: Use the specified WEP key to encrypt or decrypt packets.
+
+	Flag: -h MAC
+	Description: Set the source MAC address for MITM (Man-in-the-Middle) mode.
+
+	Flag: -f disallow
+	Description: Disallow specified client MAC addresses (by default, clients are allowed).
+
+	Flag: -W 0|1
+	Description: Set or don't set the WEP flag in beacons. '0' means don't set, '1' means set. By default, it is set automatically.
+
+	Flag: -q
+	Description: Quiet mode. Suppress printing of statistics.
+
+	Flag: -v
+	Description: Verbose mode. Print more messages for debugging or informational purposes.
+
+	Flag: -A
+	Description: Ad-Hoc Mode. Allows other clients to peer.
+
+	Flag: -Y in|out|both
+	Description: Specify external packet processing direction: incoming, outgoing, or both.
+
+	Flag: -c channel
+	Description: Set the channel on which the Access Point is running.
+
+	Flag: -X
+	Description: Set the hidden ESSID mode.
+
+	Flag: -s
+	Description: Force shared key authentication.
+
+	Flag: -S
+	Description: Set shared key challenge length. By default, it is set to 128.
+
+	Flag: -L
+	Description: Activate the Caffe-Latte WEP attack mode. Use this if the driver cannot send frags.
+
+	Flag: -N
+	Description: Activate the cfrag WEP attack mode. Recommended for WEP attacks.
+
+	Flag: -x nbpps
+	Description: Set the number of packets per second. By default, it is set to 100.
+
+	Flag: -y
+	Description: Disable responses to broadcast probes.
+
+	Flag: -0
+	Description: Set all WPA, WEP, open tags. This option can't be used with -z and -Z.
+
+	Flag: -z type
+	Description: Set WPA1 tags. Available types: 1=WEP40, 2=TKIP, 3=WRAP, 4=CCMP, 5=WEP104.
+
+	Flag: -Z type
+	Description: Set WPA2 tags. Same as -z, but for WPA2.
+
+	Flag: -V type
+	Description: Specify the fake EAPOL type. Available types: 1=MD5, 2=SHA1, 3=auto.
+
+	Flag: -F prefix
+	Description: Write all sent and received frames into a pcap file with the specified prefix.
+
+	Flag: -P
+	Description: Respond to all probes, even when specifying ESSIDs.
+
+	Flag: -I interval
+	Description: Set the beacon interval value in milliseconds.
+
+	Flag: -C seconds
+	Description: Enable beaconing of probed ESSID values. Requires -P option.
+
+	Flag: -n hex
+	Description: Specify a user-specified ANonce when doing the 4-way handshake.
+
+Usage:
+	Command: airbase-ng -c 6 -e TotallyNotATrap -N -W 1 wlan0mon
+	Description: The Hirte attack attempts to retrieve a WEP key via a client. This command creates an access point on channel 6 (-c 6) with the specified ESSID 'TotallyNotATrap'. It uses the cfrag WEP attack (-N) and sets the WEP flag in the beacons (-W 1) on the monitor mode interface wlan0mon.
+
+	Command: airbase-ng -c 6 -e AlsoNotATrap -L -W 1 wlan0mon
+	Description: The Caffe Latte Attack attempts to retrieve a WEP key via a client. This command creates an access point on channel 6 (-c 6) with the specified ESSID 'AlsoNotATrap'. It uses the Caffe Latte WEP attack (-L) and sets the WEP flag in the beacons (-W 1) on the monitor mode interface wlan0mon.
+
+
+Tool Name: airdecap-ng
+Description: []
+Dependencies: []
+Commands:
+	Flag: -l
+	Description: Don't remove the 802.11 header.
+
+	Flag: -b <bssid>
+	Description: Filter by access point MAC address.
+
+	Flag: -e <essid>
+	Description: Specify the target network SSID.
+
+	Flag: -o <fname>
+	Description: Specify the output file for decrypted packets. Default: <src>-dec.
+
+	Flag: -w <key>
+	Description: Specify the target network WEP key in hexadecimal.
+
+	Flag: -c <fname>
+	Description: Specify the output file for corrupted WEP packets. Default: <src>-bad.
+
+	Flag: -p <pass>
+	Description: Specify the target network WPA passphrase.
+
+	Flag: -k <pmk>
+	Description: Specify the WPA Pairwise Master Key in hexadecimal.
+
+Usage:
+	Command: airdecap-ng -e test -p biscotte wpa.cap
+	Description: With a given ESSID 'test' and password 'biscotte', decrypt the specified WPA capture file 'wpa.cap'. This command attempts to decrypt the WPA packets using the provided ESSID and password.
+
+	Command: tcpdump -r wpa-dec.cap
+	Description: Verify the decryption of the WPA capture by reading the decrypted capture file 'wpa-dec.cap' using tcpdump. This command reads the decrypted packets after attempting decryption with airdecap-ng.
+
+
